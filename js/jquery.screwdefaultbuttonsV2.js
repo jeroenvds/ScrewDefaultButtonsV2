@@ -160,7 +160,7 @@
 			    	});
 			    }
 			    
-			    if( $.browser.version == 7.0 || $.browser.version == 8.0 ){
+			    if (!$.support.leadingWhitespace) { // IE 7 & 8, detection should be different
 			    	var $thisId = $(this).attr('id');
 			    	var $thisLabel = $('label[for="' + $thisId + '"]');
 			    	$thisLabel.on('click', function(){
