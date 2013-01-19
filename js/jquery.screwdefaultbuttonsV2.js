@@ -95,6 +95,7 @@
 		    		
 		    		$thisParent.on('click', function(){
 		    			if (!($this.is(':disabled'))){
+		    				$this.prop("checked", !($this.prop("checked")));
 		    				$this.change();
 		    			}			    	
 		    		})
@@ -103,15 +104,14 @@
 			    	
 			    	$this.on('change', function(){
 			    		if ($this.prop('checked')){
-			    			$this.prop("checked", false);
 			    			$thisParent.css({
-			    				backgroundPosition: '0 ' + uncheckedPos + "px" 
+			    				backgroundPosition: '0 ' + checkedPos + "px" 
 			    			});
 			    		}
 			    		else {
 			    			$this.prop("checked", true);
 			    			$thisParent.css({
-			    				backgroundPosition:  '0 ' + checkedPos + "px"
+			    				backgroundPosition:  '0 ' + uncheckedPos + "px"
 			    			});
 			    		}
 			    	});
@@ -125,6 +125,9 @@
 			    	
 			    	$thisParent.on('click', function(){
 			    		if (!($this.prop('checked')) && !($this.is(':disabled'))){
+			    			$this.prop("checked", true);
+			    			var otherRadioBtns = $('input[name="'+ $thisName +'"]').not($this);
+			    			otherRadioBtns.trigger('radioSwitch');
 			    			$this.change();
 			    		}				    	
 			    	})
@@ -132,19 +135,15 @@
 			    	
 			    	$this.on('change', function(){
 			    		if ($this.prop('checked')){
-			    			$this.prop("checked", false);
-			    				$thisParent.css({
-			    					backgroundPosition:  '0 ' + uncheckedPos + "px"
-			    				});
+		    				$thisParent.css({
+		    					backgroundPosition:  '0 ' + checkedPos + "px"
+		    				});
 			    		}
 			    		else {
-			    			$this.prop("checked", true);
-				    			$thisParent.css({
-				    				backgroundPosition:  '0 ' + checkedPos + "px"
-				    			});
-			    			
-			    			var otherRadioBtns = $('input[name="'+ $thisName +'"]').not($this);
-			    			otherRadioBtns.trigger('radioSwitch');
+			    			$thisParent.css({
+			    				backgroundPosition:  '0 ' + uncheckedPos + "px"
+			    			});
+
 			    		}
 			    	});
 			    	
