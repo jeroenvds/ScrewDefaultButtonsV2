@@ -109,7 +109,6 @@
 			    			});
 			    		}
 			    		else {
-			    			$this.prop("checked", true);
 			    			$thisParent.css({
 			    				backgroundPosition:  '0 ' + uncheckedPos + "px"
 			    			});
